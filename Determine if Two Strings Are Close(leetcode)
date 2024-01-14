@@ -1,0 +1,46 @@
+class Solution {
+public:
+    bool closeStrings(string word1, string word2) {
+        if(word1.size()!=word2.size())return 0;
+        map<char,int>mp;
+        map<char,int>mp1;
+        for(int i=0;i<word1.size();i++)
+        {
+            mp[word1[i]]++;
+        }
+        for(int i=0;i<word2.size();i++)
+        {
+            mp1[word2[i]]++;
+        }
+        for(auto it:mp)
+        {
+            if((mp1[it.first])<=0){
+                return 0;
+            }
+        }
+        for(auto it:mp1)
+        {
+            if((mp[it.first])<=0){
+                return 0;
+            }
+        }
+        vector<int>vt;
+        vector<int>vt1;
+        for(auto it:mp){
+            vt.push_back(it.second);
+        }
+        for(auto it:mp1){
+            vt1.push_back(it.second);
+        }
+        sort(vt.begin(),vt.end());
+        sort(vt1.begin(),vt1.end());
+        for(int i=0;i<vt.size();i++)
+        {
+            if(vt[i]!=vt1[i])
+            {
+                return 0;
+            }
+        }
+        return 1;
+    }
+};
