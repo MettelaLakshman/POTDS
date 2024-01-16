@@ -1,0 +1,45 @@
+class RandomizedSet {
+public:
+    vector<int>vt;
+    RandomizedSet() {
+        
+    }
+    
+    bool insert(int val) {
+        if(vt.size()==0)
+        {
+            vt.push_back(val);
+            return 1;
+        }
+        int c=0;
+        for(int i=0;i<vt.size();i++)
+        {
+            if(vt[i]==val)
+            {
+                c=1;
+                return 0;
+            }
+        }
+        if(c==0)
+        {
+            vt.push_back(val);
+            return 1;
+        }
+        else return 0;
+    }
+    bool remove(int val) {
+        for(int i=0;i<vt.size();i++)
+        {
+            if(vt[i]==val)
+            {
+                vt.erase(vt.begin()+i);
+                return 1;
+            }
+            //else return 0;
+        }
+        return 0;
+    }
+    int getRandom() {
+         return vt[rand()%vt.size()];
+    }
+};
