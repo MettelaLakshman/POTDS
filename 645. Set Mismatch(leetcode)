@@ -1,0 +1,21 @@
+class Solution {
+public:
+    vector<int> findErrorNums(vector<int>& nums) {
+        vector<int>vt;
+        map<int,int>mp;
+        int c,s=0,n=nums.size();
+        for(int i=0;i<nums.size();i++)
+        {
+            mp[nums[i]]++;
+            if(mp[nums[i]]==2)
+            {
+                c=nums[i];
+            }
+            else s+=nums[i];
+        }
+        int d=(n*(n+1)/2)-s;
+        vt.push_back(c);
+        vt.push_back(d);
+        return vt;
+    }
+};
