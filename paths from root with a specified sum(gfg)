@@ -1,0 +1,20 @@
+void helper(Node *root,int sum ,vector<vector<int>>&ans,vector<int>vt,int s)
+    {
+        if(root==NULL)return;
+        s+=root->key;
+        vt.push_back(root->key);
+        if(sum==s)
+        {
+            ans.push_back(vt);
+        }
+        helper(root->left,sum,ans,vt,s);
+        helper(root->right,sum,ans,vt,s);
+    }
+    vector<vector<int>> printPaths(Node *root, int sum)
+    {
+        //code here
+        vector<vector<int>>ans;
+        vector<int>vt;
+        helper(root,sum,ans,vt,0);
+        return ans;
+    }
