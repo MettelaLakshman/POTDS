@@ -1,0 +1,16 @@
+class Solution{
+  public:
+    /*You are required to complete this method */
+    int atoi(string s) {
+        //Your code here
+        for(int i=0;i<s.size();i++)
+        {
+            
+            if((s[i]>='0' && s[i]<='9') || (s[i]=='-' && i==0))
+            {
+                continue;
+            }
+            else return -1;
+        }
+        return stoi(s);
+    }
