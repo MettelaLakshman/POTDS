@@ -1,0 +1,30 @@
+class Solution{
+public:
+    int minValue(string s, int k){
+        // code here
+        map<char,int>mp;
+        for(int i=0;i<s.size();i++)
+        {
+            mp[s[i]]++;
+        }
+        priority_queue<int>q;
+        for(auto it:mp){
+            q.push(it.second);
+        }
+        while(k--)
+        {
+            int f=q.top();
+            f-=1;
+            q.pop();
+            q.push(f);
+        }
+        long long ans=0;
+        while(!q.empty()){
+            int f=q.top();
+            ans+=(f*f);
+            q.pop();
+        }
+        return ans;
+        
+    }
+};
